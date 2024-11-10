@@ -8,7 +8,15 @@ services:
       POSTGRES_PASSWORD: admin1234
       POSTGRES_DB: sample_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    networks:
+      - pg_network
+
+  localtunnel:
+    image: node:alpine
+    container_name: localtunnel_service
+    working_dir: /app
+    command: sh -c "npm install -g localtunnel && lt --port 5433"
     networks:
       - pg_network
 
