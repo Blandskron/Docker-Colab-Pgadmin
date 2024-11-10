@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: sample_db
+    ports:
+      - "5432:5432"
+    networks:
+      - pg_network
+
+networks:
+  pg_network:
+    driver: bridge
